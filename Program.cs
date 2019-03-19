@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratoriska1
+namespace testingFromBook
 {
 
     class Program
@@ -50,11 +50,13 @@ namespace Laboratoriska1
             Console.WriteLine("6. Uspesnost na angencijata (odnos na: brojot na usluzeni klienti od site salteri i brojot na site klienti koi dosle vo agencijata");
             Console.WriteLine("7. Izlez");
             Console.WriteLine();
+            
 
             string vlez = "";
 
             while (vlez != "7")
             {
+                Console.WriteLine("DESTINACII: Rim, London, Tokio, Sofija, Istanbul, Toronto, Majami, Zagreb, Belgrad, Moskva");
                 Console.Write("ODBERI USLUGA: ");
                 vlez = Console.ReadLine();
                 switch (vlez)
@@ -90,6 +92,7 @@ namespace Laboratoriska1
 
                             Console.Write("Vnesi salter: ");
                             int salter = Convert.ToInt32(Console.ReadLine());
+                            string vreme = DateTime.Now.ToString("HH:mm");
                             //DOKOLKU E DOBRO VNESENA, SE ZAPISUVA KORISNIKOT VO SISTEMOT
                             if (flag)
                             {
@@ -102,7 +105,11 @@ namespace Laboratoriska1
                                     s1[klientS1].Prezime = prezime;
                                     s1[klientS1].Godini = godini;
                                     s1[klientS1].Destinacija = destinacija;
+                                    s1[klientS1].Vreme = vreme;
                                     sum[0] += s1[klientS1].Destinacija.Length * 2000;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Korisnikot " + s1[klientS1].Ime + " e dodaden vo: " + s1[klientS1].Vreme);
+                                    Console.WriteLine();
                                     klientS1++;
                                 }
                                 else if (salter == 2)
@@ -111,7 +118,11 @@ namespace Laboratoriska1
                                     s2[klientS2].Prezime = prezime;
                                     s2[klientS2].Godini = godini;
                                     s2[klientS2].Destinacija = destinacija;
+                                    s2[klientS2].Vreme = vreme;
                                     sum[1] += s2[klientS2].Destinacija.Length * 2000;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Korisnikot " + s2[klientS2].Ime + " e dodaden vo: " + s2[klientS2].Vreme);
+                                    Console.WriteLine();
                                     klientS2++;
                                 }
                                 else if (salter == 3)
@@ -120,7 +131,11 @@ namespace Laboratoriska1
                                     s3[klientS3].Prezime = prezime;
                                     s3[klientS3].Godini = godini;
                                     s3[klientS3].Destinacija = destinacija;
+                                    s3[klientS3].Vreme = vreme;
                                     sum[2] += s3[klientS3].Destinacija.Length * 2000;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Korisnikot " + s3[klientS3].Ime + " e dodaden vo: " + s3[klientS3].Vreme);
+                                    Console.WriteLine();
                                     klientS3++;
                                 }
                                 else if (salter == 4)
@@ -129,7 +144,11 @@ namespace Laboratoriska1
                                     s4[klientS4].Prezime = prezime;
                                     s4[klientS4].Godini = godini;
                                     s4[klientS4].Destinacija = destinacija;
+                                    s4[klientS4].Vreme = vreme;
                                     sum[3] += s4[klientS4].Destinacija.Length * 2000;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Korisnikot " + s4[klientS4].Ime + " e dodaden vo: " + s4[klientS4].Vreme);
+                                    Console.WriteLine();
                                     klientS4++;
                                 }
                                 else if (salter == 5)
@@ -138,105 +157,235 @@ namespace Laboratoriska1
                                     s5[klientS5].Prezime = prezime;
                                     s5[klientS5].Godini = godini;
                                     s5[klientS5].Destinacija = destinacija;
+                                    s5[klientS5].Vreme = vreme;
                                     sum[4] += s5[klientS5].Destinacija.Length * 2000;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Korisnikot " + s5[klientS5].Ime +" e dodaden vo: "+s5[klientS5].Vreme);
+                                    Console.WriteLine();
                                     klientS5++;
+                                    
+
                                 }
+                            }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("Korisnikot ne e dodaden poradi nepostoecka destinacija");
+                                Console.WriteLine();
                             }
 
                             if (salter > 5 || salter < 1)
                             {
+                                Console.WriteLine();
                                 Console.WriteLine("Nevaliden salter: Odberete salter od 1 do 5");
+                                Console.WriteLine();
                             }
 
                         }
 
                         break;
                     case "2":
-                        //    BROJ NA PRODADENI KARTI OD SALTER;
+                        //    BROJ NA PRODADENI KARTI OD SALTER VO VNESENO VREME;
                         {
                             Console.Write("Vnesete salter: ");
                             int salter = Convert.ToInt32(Console.ReadLine());
+                            Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                            string timeStart = Console.ReadLine();
+                            Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                            string timeEnd = Console.ReadLine();
+
                             if (salter == 1)
-                                Console.WriteLine("Broj na karti na salterot " + salter + " e: " + klientS1);
+                            {
+                                int brojacKlientS1 = 0;
+                                for (int i = 0; i < klientS1; i++)
+                                {
+                                    if (string.Compare(s1[i].Vreme, timeStart) != -1 && string.Compare(s1[i].Vreme, timeEnd) == -1)
+                                        brojacKlientS1++;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Broj na karti na salterot " + salter + " vo vreme od: " + timeStart + " do " + timeEnd + " e: " + brojacKlientS1);
+                                Console.WriteLine();
+                            }
+
                             else if (salter == 2)
-                                Console.WriteLine("Broj na karti na salterot " + salter + " e: " + klientS2);
+                            {
+                                int brojacKlientS2 = 0;
+                                for(int i=0;i<klientS2;i++)
+                                {
+                                    if (string.Compare(s2[i].Vreme, timeStart) != -1 && string.Compare(s2[i].Vreme, timeEnd) == -1)
+                                        brojacKlientS2++;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Broj na karti na salterot " + salter + " vo vreme od: " + timeStart + " do " + timeEnd + " e: " + brojacKlientS2);
+                                Console.WriteLine();
+                            }
+                                
                             else if (salter == 3)
-                                Console.WriteLine("Broj na karti na salterot " + salter + " e: " + klientS3);
+                            {
+                                int brojacKlientS3 = 0;
+                                for (int i = 0; i < klientS3; i++)
+                                {
+                                    if (string.Compare(s3[i].Vreme, timeStart) != -1 && string.Compare(s3[i].Vreme, timeEnd) == -1)
+                                        brojacKlientS3++;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Broj na karti na salterot " + salter + " vo vreme od: " + timeStart + " do " + timeEnd + " e: " + brojacKlientS3);
+                                Console.WriteLine();
+                            }
+                                
                             else if (salter == 4)
-                                Console.WriteLine("Broj na karti na salterot " + salter + " e: " + klientS4);
+                            {
+                                int brojacKlientS4 = 0;
+                                for (int i = 0; i < klientS4; i++)
+                                {
+                                    if (string.Compare(s4[i].Vreme, timeStart) != -1 && string.Compare(s4[i].Vreme, timeEnd) == -1)
+                                        brojacKlientS4++;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Broj na karti na salterot " + salter + " vo vreme od: " + timeStart + " do " + timeEnd + " e: " + brojacKlientS4);
+                                Console.WriteLine();
+                            }
+                                
                             else if (salter == 5)
-                                Console.WriteLine("Broj na karti na salterot " + salter + " e: " + klientS5);
+                            {
+                                int brojacKlientS5 = 0;
+                                for (int i = 0; i < klientS5; i++)
+                                {
+                                    if (string.Compare(s5[i].Vreme, timeStart) != -1 && string.Compare(s5[i].Vreme, timeEnd) == -1)
+                                        brojacKlientS5++;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Broj na karti na salterot " + salter + " vo vreme od: " + timeStart + " do " + timeEnd + " e: " + brojacKlientS5);
+                                Console.WriteLine();
+                            }
+                                
 
                             else
                             {
+                                Console.WriteLine();
                                 Console.Write("Nevaliden salter. Odberete salter od 1 do 5!");
+                                Console.WriteLine();
                             }
 
                         }
                         break;
                     case "3":
-                        //  VKUPEN PROMET OD VNESEN SALTER;
+                        //  VKUPEN PROMET OD VNESEN SALTER VO VNESENO VREME;
                         {
                             Console.Write("Vnesete salter: ");
                             int salter = Convert.ToInt32(Console.ReadLine());
+                            Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                            string timeStart = Console.ReadLine();
+                            Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                            string timeEnd = Console.ReadLine();
                             if (salter == 1)
                             {
-                                Console.WriteLine("Promet na salterot 1 e " + sum[0]);
+                                int suma1 = 0;
+                                for (int i = 0; i < klientS1; i++)
+                                {
+                                    if (string.Compare(s1[i].Vreme, timeStart) != -1 && string.Compare(s1[i].Vreme, timeEnd) == -1)
+                                        suma1 += s1[i].Destinacija.Length * 2000;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Vkupen promet na salterot 1 od: " + timeStart + " do: " + timeEnd + " iznesuva: "+suma1);
+                                Console.WriteLine();
                             }
                             if (salter == 2)
                             {
-                                Console.WriteLine("Promet na salterot 2 e " + sum[1]);
+                                int suma2 = 0;
+                                for (int i = 0; i < klientS2; i++)
+                                {
+                                    if (string.Compare(s2[i].Vreme, timeStart) != -1 && string.Compare(s2[i].Vreme, timeEnd) == -1)
+                                        suma2 += s2[i].Destinacija.Length * 2000;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Vkupen promet na salterot 2 od: " + timeStart + " do: " + timeEnd + " iznesuva: " + suma2);
+                                Console.WriteLine();
                             }
                             if (salter == 3)
                             {
-                                Console.WriteLine("Promet na salterot 3 e " + sum[2]);
+                                int suma3 = 0;
+                                for (int i = 0; i < klientS3; i++)
+                                {
+                                    if (string.Compare(s3[i].Vreme, timeStart) != -1 && string.Compare(s3[i].Vreme, timeEnd) == -1)
+                                        suma3 += s3[i].Destinacija.Length * 2000;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Vkupen promet na salterot 3 od: " + timeStart + " do: " + timeEnd + " iznesuva: " + suma3);
+                                Console.WriteLine();
                             }
                             if (salter == 4)
                             {
-                                Console.WriteLine("Promet na salterot 4 e " + sum[3]);
+                                int suma4 = 0;
+                                for (int i = 0; i < klientS4; i++)
+                                {
+                                    if (string.Compare(s4[i].Vreme, timeStart) != -1 && string.Compare(s4[i].Vreme, timeEnd) == -1)
+                                        suma4 += s4[i].Destinacija.Length * 2000;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Vkupen promet na salterot 4 od: " + timeStart + " do: " + timeEnd + " iznesuva: " + suma4);
+                                Console.WriteLine();
                             }
                             if (salter == 5)
                             {
-                                Console.WriteLine("Promet na salterot 5 e " + sum[4]);
+                                int suma5 = 0;
+                                for (int i = 0; i < klientS5; i++)
+                                {
+                                    if (string.Compare(s5[i].Vreme, timeStart) != -1 && string.Compare(s5[i].Vreme, timeEnd) == -1)
+                                        suma5 += s5[i].Destinacija.Length * 2000;
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Vkupen promet na salterot 5 od: " + timeStart + " do: " + timeEnd + " iznesuva: " + suma5);
+                                Console.WriteLine();
                             }
                         }
                         break;
                     case "4":
-                        //  SITE KARTI PRODADENI STAVENI VO TABELA SPORED SALTERI;
+                        //  SITE KARTI PRODADENI STAVENI VO TABELA SPORED SALTERI VO VNESENO VREME;
                         {
+                            Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                            string timeStart = Console.ReadLine();
+                            Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                            string timeEnd = Console.ReadLine();
+
                             Console.WriteLine("Salter 1");
-                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija");
+                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
                             for (int i = 0; i < klientS1; i++)
                             {
-                                Console.WriteLine(s1[i].Ime + "\t" + s1[i].Prezime + "\t" + s1[i].Godini + "\t" + s1[i].Destinacija);
+                                if (string.Compare(s1[i].Vreme, timeStart) != -1 && string.Compare(s1[i].Vreme, timeEnd) == -1)
+                                    Console.WriteLine(s1[i].Ime + "\t" + s1[i].Prezime + "\t" + s1[i].Godini + "\t" + s1[i].Destinacija + "\t\t" + s1[i].Vreme);
                             }
                             Console.WriteLine();
                             Console.WriteLine("Salter 2");
-                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija");
+                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
                             for (int i = 0; i < klientS2; i++)
                             {
-                                Console.WriteLine(s2[i].Ime + "\t" + s2[i].Prezime + "\t" + s2[i].Godini + "\t" + s2[i].Destinacija);
+                                if (string.Compare(s2[i].Vreme, timeStart) != -1 && string.Compare(s2[i].Vreme, timeEnd) == -1)
+                                    Console.WriteLine(s2[i].Ime + "\t" + s2[i].Prezime + "\t" + s2[i].Godini + "\t" + s2[i].Destinacija + "\t\t" + s2[i].Vreme);
                             }
                             Console.WriteLine();
                             Console.WriteLine("Salter 3");
-                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija");
+                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
                             for (int i = 0; i < klientS3; i++)
                             {
-                                Console.WriteLine(s3[i].Ime + "\t" + s3[i].Prezime + "\t" + s3[i].Godini + "\t" + s3[i].Destinacija);
+                                if (string.Compare(s3[i].Vreme, timeStart) != -1 && string.Compare(s3[i].Vreme, timeEnd) == -1)
+                                    Console.WriteLine(s3[i].Ime + "\t" + s3[i].Prezime + "\t" + s3[i].Godini + "\t" + s3[i].Destinacija + "\t\t" + s3[i].Vreme);
                             }
                             Console.WriteLine();
                             Console.WriteLine("Salter 4");
-                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija");
+                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
                             for (int i = 0; i < klientS4; i++)
                             {
-                                Console.WriteLine(s4[i].Ime + "\t" + s4[i].Prezime + "\t" + s4[i].Godini + "\t" + s4[i].Destinacija);
+                                if (string.Compare(s4[i].Vreme, timeStart) != -1 && string.Compare(s4[i].Vreme, timeEnd) == -1)
+                                    Console.WriteLine(s4[i].Ime + "\t" + s4[i].Prezime + "\t" + s4[i].Godini + "\t" + s4[i].Destinacija + "\t\t" + s4[i].Vreme);
                             }
                             Console.WriteLine();
                             Console.WriteLine("Salter 5");
-                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija");
+                            Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
                             for (int i = 0; i < klientS5; i++)
                             {
-                                Console.WriteLine(s5[i].Ime + "\t" + s5[i].Prezime + "\t" + s5[i].Godini + "\t" + s5[i].Destinacija);
+                                if (string.Compare(s5[i].Vreme, timeStart) != -1 && string.Compare(s5[i].Vreme, timeEnd) == -1)
+                                    Console.WriteLine(s5[i].Ime + "\t" + s5[i].Prezime + "\t" + s5[i].Godini + "\t" + s5[i].Destinacija + "\t\t" + s5[i].Vreme);
                             }
                         }
                         break;
@@ -244,14 +393,18 @@ namespace Laboratoriska1
                         //  VKUPEN PROMET NA CELA AGENCIJA;
                         {
                             int zbir = sum[0] + sum[1] + sum[2] + sum[3] + sum[4];
+                            Console.WriteLine();
                             Console.WriteLine("Vkupen promet na agencijata: " + zbir);
+                            Console.WriteLine();
                         }
                         break;
                     case "6":
                         //  USPESNOST NA AGENCIJA, ODNOS POMEGJU ZAPISANI I NEZAPISANI KLIENTI;
                         {
+                            Console.WriteLine();
                             Console.Write("Uspesnost na agencijata (broj na usluzeni klienti / broj na klienti koi dosle vo agencijata): ");
                             Console.WriteLine(ucesnik + "/" + odberenUcesnik);
+                            Console.WriteLine();
                         }
                         break;
                     case "7":
