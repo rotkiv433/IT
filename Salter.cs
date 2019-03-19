@@ -1,3 +1,4 @@
+//@author Viktor Ilievski
 namespace testingFromBook
 {
     internal class Salter
@@ -81,3 +82,4 @@ namespace testingFromBook
         
     }
 }
+//@author Viktor Ilievski
