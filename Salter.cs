@@ -1,4 +1,4 @@
-﻿namespace Laboratoriska1
+namespace testingFromBook
 {
     internal class Salter
     {
@@ -6,18 +6,18 @@
         private string prezime;
         private int godini;
         private string destinacija;
-
+        private string vreme;
         public Salter()
         {
         }
 
-        public Salter(string ime, string prezime, int godini, string destinacija)
+        public Salter(string ime, string prezime, int godini, string destinacija, string vreme)
         {
             this.ime = ime;
             this.prezime = prezime;
             this.godini = godini;
             this.destinacija = destinacija;
-
+            this.vreme = vreme;
         }
 
         public string Ime
@@ -66,6 +66,18 @@
             }
         }
 
+        public string Vreme
+        {
+            get
+            {
+                return vreme;
+            }
+            set
+            {
+                vreme = value;
+            }
+        }
 
+        
     }
 }
