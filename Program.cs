@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace testingFromBook
 {
 
@@ -190,9 +191,37 @@ namespace testingFromBook
                             Console.Write("Vnesete salter: ");
                             int salter = Convert.ToInt32(Console.ReadLine());
                             Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
-                            string timeStart = Console.ReadLine();
+                            string timeStart;
+                            string timeEnd;
+                            while (true)
+                            {
+                                timeStart = Console.ReadLine();
+                                if (checkTimeStart(timeStart))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format! / Nevalidno vreme");
+                                    Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                                }
+                                    
+                            }
+                            
+                            
                             Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
-                            string timeEnd = Console.ReadLine();
+                            while(true)
+                            {
+                                timeEnd = Console.ReadLine();
+                                if (checkTimeEnd(timeEnd))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format! / Nevalidno vreme");
+                                    Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                                }
+                            }
+                            
 
                             if (salter == 1)
                             {
@@ -275,9 +304,37 @@ namespace testingFromBook
                             Console.Write("Vnesete salter: ");
                             int salter = Convert.ToInt32(Console.ReadLine());
                             Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
-                            string timeStart = Console.ReadLine();
+                            string timeStart;
+                            string timeEnd;
+                            while (true)
+                            {
+                                timeStart = Console.ReadLine();
+                                if (checkTimeStart(timeStart))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format! / Nevalidno vreme");
+                                    Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                                }
+
+                            }
+
+
                             Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
-                            string timeEnd = Console.ReadLine();
+                            while (true)
+                            {
+                                timeEnd = Console.ReadLine();
+                                if (checkTimeEnd(timeEnd))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format! / Nevalidno vreme");
+                                    Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                                }
+                            }
+
                             if (salter == 1)
                             {
                                 int suma1 = 0;
@@ -344,9 +401,36 @@ namespace testingFromBook
                         //  SITE KARTI PRODADENI STAVENI VO TABELA SPORED SALTERI VO VNESENO VREME;
                         {
                             Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
-                            string timeStart = Console.ReadLine();
+                            string timeStart;
+                            string timeEnd;
+                            while (true)
+                            {
+                                timeStart = Console.ReadLine();
+                                if (checkTimeStart(timeStart))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format!");
+                                    Console.Write("Vnesete pocetok na vreme (FORMAT HH:mm) = ");
+                                }
+
+                            }
+
+
                             Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
-                            string timeEnd = Console.ReadLine();
+                            while (true)
+                            {
+                                timeEnd = Console.ReadLine();
+                                if (checkTimeEnd(timeEnd))
+                                    break;
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Pogresen format!");
+                                    Console.Write("Vnesete kraj na vreme (FORMAT HH:mm) = ");
+                                }
+                            }
 
                             Console.WriteLine("Salter 1");
                             Console.WriteLine("Ime\tPrezime\t\tGodini\tDestinacija\tVreme");
@@ -421,6 +505,46 @@ namespace testingFromBook
 
         }
 
+        private static bool checkTimeStart(string timeStart)
+        {
+            char[] znak = timeStart.ToCharArray();
+            if (znak[0] > '2'
+                || znak[3] > '5')
+                return false;
+            if (znak[0] == '2' && znak[1] > '4')
+                return false;
+            if (timeStart.Length == 5
+                && Char.IsDigit(znak[0])
+                && Char.IsDigit(znak[1])
+                && znak[2] == ':'
+                && Char.IsDigit(znak[3])
+                && Char.IsDigit(znak[4]))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
 
+        private static bool checkTimeEnd(string timeEnd)
+        {
+            char[] znak = timeEnd.ToCharArray();
+            if (znak[0] > '2'
+                || znak[3] > '5')
+                return false;
+            if (znak[0] == '2' && znak[1] > '4')
+                return false;
+            if (timeEnd.Length==5
+                && Char.IsDigit(znak[0])
+                && Char.IsDigit(znak[1])
+                && znak[2] == ':'
+                && Char.IsDigit(znak[3])
+                && Char.IsDigit(znak[4]))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
