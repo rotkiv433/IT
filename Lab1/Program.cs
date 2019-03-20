@@ -180,6 +180,8 @@ namespace testingFromBook
                                 Console.WriteLine();
                                 Console.WriteLine("Nevaliden salter: Odberete salter od 1 do 5");
                                 Console.WriteLine();
+                                ucesnik--;
+                                odberenUcesnik--;
                             }
 
                         }
@@ -511,7 +513,7 @@ namespace testingFromBook
             if (znak[0] > '2'
                 || znak[3] > '5')
                 return false;
-            if (znak[0] == '2' && znak[1] > '4')
+            if (znak[0] == '2' && znak[1] > '3')
                 return false;
             if (timeStart.Length == 5
                 && Char.IsDigit(znak[0])
@@ -532,7 +534,7 @@ namespace testingFromBook
             if (znak[0] > '2'
                 || znak[3] > '5')
                 return false;
-            if (znak[0] == '2' && znak[1] > '4')
+            if (znak[0] == '2' && znak[1] > '3')
                 return false;
             if (timeEnd.Length==5
                 && Char.IsDigit(znak[0])
